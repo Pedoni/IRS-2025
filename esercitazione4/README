@@ -1,0 +1,7 @@
+ESERCITAZIONE 4: MOTORSCHEMA
+
+Per questo esercizio sono partito dall'implementazione dell'esercitazione precedente, ossia quella delle subsumptions. Lo scopo dell'esercizio era applicare l'architettura vista a lezione, ossia quella relativa all'utilizzo di motorschema.
+
+Quello che ho fatto è stato rimuovere le priorità dai layer e e fare in modo che ogni layer restituisca un vettore, per far si che "contribuisca" (a volte più, a volte meno, a volte per nulla) al movimento, come visto a lezione. Per la phototatix ho fatto una semplice somma tra i vettori; per l'obstacle avoidance stesso discorso, ma ho dovuto aggiungere pi all'angolo per avere la direzione opposta. Per quanto riguarda il random walk, controllo prima se phototaxis e obstacle avoidance restituiscono vettori diversi da zero: se si, restituisce un vettore nullo, altrimenti restituisce un vettore con velocità massima e angolo casuale fra -pi/4 e pi/4 (il range che ci interessa). 
+
+Per quanto riguarda lo stop, ho provato a cercare un modo che non uscisse da motorschema. Quando sono so uno spot, devo fermarmi: quindi prendo i vettori dagli altri tre layer e, partendo dalla loro somma, calcolo il vettore opposto per fare in modo che il risultato finale della somma annulli il movimento, di fatto fermando il robot. Sembra funzionare perché il robot si ferma, ma fa piccoli scattini ogni 2-3 secondi quindi di fatto non si è fermato del tutto...
