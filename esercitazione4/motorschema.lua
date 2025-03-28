@@ -10,8 +10,8 @@ local function randomFloat(lower, greater)
 end
 
 function schemas.randomWalk(robot)
-    local lv = schemas.phototaxisLayer(robot)
-	local pv = schemas.obstacleAvoidanceLayer(robot)
+    local lv = schemas.phototaxis(robot)
+	local pv = schemas.obstacleAvoidance(robot)
 	if lv.length == 0 and lv.angle == 0 and pv.length == 0 and pv.angle == 0 then
 		return vector.get_polar_vector(MAX_VEL, randomFloat(-math.pi/4,math.pi/4))
 	else 
@@ -19,7 +19,7 @@ function schemas.randomWalk(robot)
 	end
 end
 
-function schemas.phototaxisLayer(robot)
+function schemas.phototaxis(robot)
 	local pv = vector.get_polar_vector(0, 0)
     for i=1,#robot.light do
 		local sensorVector = vector.get_polar_vector(0, 0)
@@ -33,11 +33,11 @@ function schemas.phototaxisLayer(robot)
     return pv
 end
 
-function schemas.obstacleAvoidanceLayer(robot)
+function schemas.obstacleAvoidance(robot)
 	local pv = vector.get_polar_vector(0, 0)
     for i=1,#robot.proximity do
 		local proxVector = vector.get_polar_vector(0, 0)
-		if robot.proximity[i].value > PROXIMITY_THRESHOLD then		
+		if robot.proximity[i].value > PROXIMITY_THRESHOLD then
 			--usiamo il modulo per restare nel range [-pi, +pi]
 			proxVector = vector.get_polar_vector(robot.proximity[i].value, (robot.proximity[i].angle + math.pi) % (2 * math.pi))
 		end
@@ -46,7 +46,7 @@ function schemas.obstacleAvoidanceLayer(robot)
     return pv
 end
 
-function schemas.haltLayer(robot)
+function schemas.halt(robot)
 	local ground = robot.motor_ground
 	local spot = false
 	for i=1,4 do
@@ -56,9 +56,8 @@ function schemas.haltLayer(robot)
 		end
 	end
 	if spot then
-		log("spot")
-		local vect = schemas.phototaxisLayer(robot)
-		vect = vector.vec2_polar_sum(vect, schemas.obstacleAvoidanceLayer(robot))
+		local vect = schemas.phototaxis(robot)
+		vect = vector.vec2_polar_sum(vect, schemas.obstacleAvoidance(robot))
 		vect = vector.vec2_polar_sum(vect, schemas.randomWalk(robot))
 		vect = vector.get_polar_vector(-vect.length, vect.angle)
 		return vect

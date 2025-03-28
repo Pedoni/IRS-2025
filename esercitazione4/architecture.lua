@@ -9,9 +9,9 @@ function init()
 	robot.wheels.set_velocity(0,0)
 	schemas = {
 		ms.randomWalk,
-		ms.phototaxisLayer,
-		ms.obstacleAvoidanceLayer,
-		ms.haltLayer,
+		ms.phototaxis,
+		ms.obstacleAvoidance,
+		ms.halt,
 	}
 	L = robot.wheels.axis_length
 end
