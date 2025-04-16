@@ -1,4 +1,4 @@
-MAX_VELOCITY = 80
+MAX_VELOCITY = 15
 
 function init()
 	left_v = robot.random.uniform(0,MAX_VELOCITY)
