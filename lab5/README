@@ -1,0 +1,11 @@
+LAB 5: SWARM ROBOTICS
+
+Exercise 1
+
+This last exercise was quite guided, so I started by setting all the suggested values ​​in constants and defining the CountRAB function. Then I decided to define two states (RANDWALK and STOP), thus keeping variables for the current state and the next state. I then took the functions for the random walk (as explained in class, not an optimal version) and the obstacle avoidance from the previous exercises. Using these mechanisms, I defined two main functions:
+- Randwalk(), which takes care of doing random walks with obstacle avoidance, and each time calculates the probability of stopping and possibly stops the robot (changing state)
+- Stop(), which takes care of stopping the robot and each time calculates the probability of restarting and possibly restarts the robot (changing state)
+
+Exercise 2
+
+At this point I simply added the two required variables, thus updating the probability calculation also taking into account the presence or absence of a spot. From the tests, a correct trend actually emerges: robots tend to stop more likely when they are in a group on a spot.

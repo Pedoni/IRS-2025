@@ -1,0 +1,5 @@
+LAB 3: SUBSUMPTIONS
+
+For this exercise I started from the implementation of the combined phototaxis and obstacle avoidance from lab 2. The aim of the exercise was to apply the architecture seen in class, that is, the one related to the use of subsumptions.
+
+I then split the various layers (represented by functions) into a separate file, while I left the general mechanism in the original file. I then imported the functions and implemented a loop, which scrolls through the list of layers (divided by priority) and then executes all the layers. The layers with the highest priority are at the bottom, so if a layer has more priority than a previous one, the data is overwritten ("blackboard" method).

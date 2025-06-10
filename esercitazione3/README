@@ -1,5 +1,0 @@
-ESERCITAZIONE 3: SUBSUMPTIONS
-
-Per questo esercizio sono partito dall'implementazione della phototaxis e della obstacle avoidance combinate dell'esercitazione 2. Lo scopo dell'esercizio era applicare l'architettura vista a lezione, ossia quella relativa all'utilizzo di subsumptions.
-
-Ho quindi diviso i vari layer (rappresentati da funzioni) in un file a parte, mentre ho lasciato il meccanismo generale nel file di partenza. Ho quindi importato le funzioni e ho implementato un ciclo, che scorre la lista dei layer (divisi per priorità) e quindi esegue tutti i layer. I layer con priorità più alta sono in fondo, quindi se un layer ha più priorità rispetto ad uno precedente, i dati vengono sovrascritti (metodo "blackboard").

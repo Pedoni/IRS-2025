@@ -1,0 +1,7 @@
+LAB 4: MOTORSCHEMA
+
+For this exercise I started from the implementation of the previous lab, that is, the subsumptions. The purpose of the exercise was to apply the architecture seen in class, that is, the one related to the use of motorschema.
+
+What I did was to remove the priorities from the layers and make each layer return a vector, so that it "contributes" (sometimes more, sometimes less, sometimes not at all) to the movement, as seen in class. For the phototaxis I did a simple sum between the vectors; for the obstacle avoidance the same thing, but I had to add pi to the angle to have the opposite direction. As for the random walk, I first check if phototaxis and obstacle avoidance return vectors other than zero: if so, it returns a null vector, otherwise it returns a vector with maximum speed and random angle between -pi/4 and pi/4 (the range we are interested in).
+
+As for the stop, I tried to find a way that did not go beyond the rules of motorschema. When I know a spot, I have to stop: so I take the vectors from the other three layers and, starting from their sum, I calculate the opposite vector so that the final result of the sum cancels the movement, effectively stopping the robot. It seems to work because the robot stops, but it makes small jolts every 2-3 seconds so in fact it has not stopped completely... following the discussion in class it turned out that this is a rather fragile solution, so it is definitely better to find another method.

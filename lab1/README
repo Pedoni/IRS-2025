@@ -1,0 +1,11 @@
+LAB 1: PHOTOTAXIS AND OBSTACLE AVOIDANCE
+
+
+Exercise 1: Phototaxis
+
+For this exercise I decided to loop through the robot's 24 light sensors to see which one had the highest value. Once I found the sensor, I decided what to do: if the sensor was on the front (I used sensor 24 and 1 as a single sensor), then I went straight; if the sensor was on the left side, then I turned left (setting the speed to [-max /2, max/2]); if the sensor was on the right side, then I turned right (setting the speed to [max /2, -max/2]).
+
+
+Exercise 2: Obstacle Avoidance
+
+Also for this exercise I decided to run a loop, this time on the proximity sensors. If I find an obstacle on the left I go right (setting the speed to [max /2, -max/2]), if I find an obstacle on the right I go left (setting the speed to [-max /2, max/2]), otherwise I move randomly as requested by the assignment.

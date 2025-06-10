@@ -1,0 +1,5 @@
+LAB 2: PHOTOTAXIS AND OBSTACLE AVOIDANCE COMBINED
+
+For this exercise I started from the implementation of phototaxis and obstacle avoidance from lab 1. At each step I check if there are obstacles around me (as in exercise 2 of lab 1): if there are no obstacles around me, I proceed straight towards the light (as in exercise 1 of lab 1), otherwise I avoid them. I used an enum to manage the obstacles (no obstacles, obstacle on the left, obstacle on the right, obstacle in front and obstacle behind). In addition to this I made sure that, in the absence of light, the robot moves randomly (avoiding the obstacles) until it finds the light: from that moment it starts to behave as established.
+
+There are some problems, among all the loop that occurs when a large obstacle is between the robot and the light (perhaps a wall following mechanism should be implemented) and the case in which the robot is between two objects equally distant from it (the robot continuously turns left and right without moving, perhaps the solution could be to keep a history of the rotations and understand if a strange loop is occurring).
